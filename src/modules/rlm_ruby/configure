@@ -2799,12 +2799,16 @@ $as_echo "$as_me: include: $RB_INC_DIR" >&6;}
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: cflags: $RB_FLAGS" >&5
 $as_echo "$as_me: cflags: $RB_FLAGS" >&6;}
 
-		RB_ARCH_DIR=`${RUBYBIN} -e "require 'rbconfig'; puts RbConfig::CONFIG.fetch('archdir')"`
-		{ $as_echo "$as_me:${as_lineno-$LINENO}: arch: $RB_ARCH_DIR" >&5
-$as_echo "$as_me: arch: $RB_ARCH_DIR" >&6;}
+		RB_ARCH_HDR_DIR=`${RUBYBIN} -e "require 'rbconfig'; puts RbConfig::CONFIG.fetch('rubyarchhdrdir')"`
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: rubyarchhdrdir: $RB_ARCH_HDR_DIR" >&5
+$as_echo "$as_me: archincludedir: $RB_ARCH_HDR_DIR" >&6;}
+
+		RB_HDR_DIR=`${RUBYBIN} -e "require 'rbconfig'; puts RbConfig::CONFIG.fetch('rubyhdrdir')"`
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: rubyhdrdir: $RB_HDR_DIR" >&5
+$as_echo "$as_me: rubyhdrdir: $RB_HDR_DIR" >&6;}
 
 		old_CFLAGS=$CFLAGS
-		CFLAGS="$CFLAGS $RB_CFLAGS -I${RB_ARCH_DIR} -I${RB_INC_DIR} -I${RB_INC_DIR}/ruby-${RB_VERSION}"
+		CFLAGS="$CFLAGS $RB_CFLAGS -I${RB_HDR_DIR} -I${RB_ARCH_HDR_DIR} -I${RB_INC_DIR} -I${RB_INC_DIR}/ruby-${RB_VERSION}"
 		{ $as_echo "$as_me:${as_lineno-$LINENO}: \"$CFLAGS\"" >&5
 $as_echo "$as_me: \"$CFLAGS\"" >&6;};
 
